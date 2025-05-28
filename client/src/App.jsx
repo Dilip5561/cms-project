@@ -1,10 +1,10 @@
 import './App.css'
-import Developers from './pages/Developers'
+import SignIn from './pages/SignIn';
 
 function App() {
   return (
     <>
-      <Developers />
+      <SignIn />
     </>
   )
 }
