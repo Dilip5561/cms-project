@@ -1,12 +1,13 @@
-import './App.css'
-import Home from './pages/Home';
+// To render only SignIn
+import './App.css';
+import SignIn from './pages/SignIn';
 
 function App() {
   return (
     <>
-      <Home />
+      <SignIn />
     </>
-  )
+  );
 }
 
 export default App;
