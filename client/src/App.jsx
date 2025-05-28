@@ -1,10 +1,10 @@
 import './App.css'
-import Developers from './pages/Developers'
+import Home from './pages/Home';
 
 function App() {
   return (
     <>
-      <Developers />
+      <Home />
     </>
   )
 }
