@@ -1,4 +1,5 @@
-import './App.css'
+// To render only SignIn
+import './App.css';
 import SignIn from './pages/SignIn';
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
     <>
       <SignIn />
     </>
-  )
+  );
 }
 
 export default App;
