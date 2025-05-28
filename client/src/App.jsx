@@ -1,10 +1,10 @@
-import './App.css'
-import Developers from './pages/Developers'
+import './App.css';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
     <>
-      <Developers />
+      <SignUp />
     </>
   )
 }
