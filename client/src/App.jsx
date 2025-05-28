@@ -1,12 +1,11 @@
-import './App.css';
-import Home from './pages/Home';
+import Home from './pages/Home'; // Make sure path is correct
 
 function App() {
   return (
-    <>
-      <Home/>
-    </>
-  )
+    <div>
+      <Home />
+    </div>
+  );
 }
 
 export default App;
