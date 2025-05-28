@@ -1,10 +1,10 @@
 import './App.css'
-import About from './pages/About'
+import Developers from './pages/Developers'
 
 function App() {
   return (
     <>
-      <About/>
+      <Developers />
     </>
   )
 }
