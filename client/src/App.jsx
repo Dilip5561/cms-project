@@ -1,12 +1,11 @@
-import './App.css';
-import SignUp from './pages/SignUp';
+import Home from './pages/Home'; // Make sure path is correct
 
 function App() {
   return (
-    <>
-      <SignUp />
-    </>
-  )
+    <div>
+      <Home />
+    </div>
+  );
 }
 
 export default App;
