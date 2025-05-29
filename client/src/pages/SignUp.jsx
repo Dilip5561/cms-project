@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import historyService from '../services/HistoryService';
+import userService from '../services/UserService'; // if you use it
+
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -15,10 +18,16 @@ export default function SignUp() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Signing up with:', formData);
-    alert('Sign-up submitted. Implement backend logic here.');
-  };
+  e.preventDefault();
+  try {
+    userService.addUser(formData.email, formData.password);
+    historyService.logActivity(formData.email, "Registered a new account");
+    alert("User registered successfully!");
+    setFormData({ name: '', email: '', password: '' }); // clear form
+  } catch (err) {
+    alert(err.message);
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-blue-200 px-4">
