@@ -1,9 +1,10 @@
-import Home from './pages/Home'; // Make sure path is correct
+import SignIn from "./pages/SignIn";
+
 
 function App() {
   return (
     <div>
-      <Home />
+      <SignIn/>
     </div>
   );
 }
