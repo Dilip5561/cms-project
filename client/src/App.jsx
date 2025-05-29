@@ -1,11 +1,12 @@
-import SignIn from "./pages/SignIn";
 
+import AuthProvider from './context/AuthProvider';
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
   return (
-    <div>
-      <SignIn/>
-    </div>
+    <AuthProvider>
+     <AppRoutes />
+    </AuthProvider>
   );
 }
 

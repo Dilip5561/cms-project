@@ -11,8 +11,11 @@ export default function DashboardLayout() {
           <Link to="/dashboard" className="block px-4 py-2 rounded hover:bg-blue-100">
             Home
           </Link>
-          <Link to="/dashboard/profile" className="block px-4 py-2 rounded hover:bg-blue-100">
+          <Link to="/dashboard/developers" className="block px-4 py-2 rounded hover:bg-blue-100">
             Profile
+          </Link>
+          <Link to="/dashboard/about" className="block px-4 py-2 rounded hover:bg-blue-100">
+            About
           </Link>
           {/* Add more links as pages are developed */}
           <Link to="/signin" className="block px-4 py-2 mt-4 text-red-600 hover:bg-red-100">

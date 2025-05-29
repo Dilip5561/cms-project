@@ -1,11 +1,9 @@
-import { createContext, useState, useEffect } from 'react';
-export const AuthContext = createContext();
+import React, { useState, useEffect } from 'react';
+import { AuthContext } from './AuthContext'; // import context from separate file
 
-
-// Create the provider component
 export default function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userEmail, setUserEmail] = useState(''); // ✅ move inside the component
+  const [userEmail, setUserEmail] = useState('');
 
   useEffect(() => {
     const storedEmail = localStorage.getItem('userEmail');
