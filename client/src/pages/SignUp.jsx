@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import historyService from '../services/HistoryService';
-import userService from '../services/UserService'; // if you use it
-
+import historyService from '../service/HistoryService';
+import userService from '../service/UserService';
+import { useNavigate } from 'react-router-dom'; // ✅ Add this
 
 export default function SignUp() {
+  const navigate = useNavigate(); // ✅ Navigation hook
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,17 +20,29 @@ export default function SignUp() {
   };
 
   const handleSubmit = (e) => {
-  e.preventDefault();
-  try {
-    userService.addUser(formData.email, formData.password);
-    historyService.logActivity(formData.email, "Registered a new account");
-    alert("User registered successfully!");
-    setFormData({ name: '', email: '', password: '' }); // clear form
-  } catch (err) {
-    alert(err.message);
-  }
-};
+    e.preventDefault();
 
+    try {
+      // ✅ Try adding user
+      userService.addUser(formData.email, formData.password);
+      historyService.logActivity(formData.email, "Registered a new account");
+      alert("User registered successfully!");
+
+    } catch (err) {
+      if (err.message === "user already exists") {
+        alert("User already exists! Redirecting to login...");
+      } else {
+        alert(err.message);
+        return;
+      }
+    }
+
+    // ✅ Clear form and redirect to sign-in
+    setFormData({ name: '', email: '', password: '' });
+    navigate('/signin');
+  };
+
+ 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-blue-200 px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
