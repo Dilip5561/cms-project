@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import userService from '../service/UserService'; // ✅ Import your class-based service
+import userService from '../service/UserService';
+import Swal from 'sweetalert2';  // <-- Import SweetAlert2
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -9,36 +10,47 @@ export default function SignIn() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // ✅ Validate using your class method
+      // Validate using your class method
       userService.authenticate(email, password);
 
-      // ✅ Update login context
+      // Update login context
       login(email);
 
-      // ✅ Optional: Log login history
+      // Log login history
       const now = new Date().toISOString();
       const loginHistory = JSON.parse(localStorage.getItem('loginHistory')) || [];
       loginHistory.push({ email, password, dateTime: now });
       localStorage.setItem('loginHistory', JSON.stringify(loginHistory));
 
-      alert('Login successful!');
+      await Swal.fire({
+        icon: 'success',
+        title: 'Login Successful',
+        text: 'Welcome back!',
+        confirmButtonText: 'OK',
+      });
+
       setEmail('');
       setPassword('');
 
-      // ✅ Navigate to About Page (as per your goal)
+      // Navigate to dashboard
       navigate('/dashboard/about');
 
     } catch (err) {
-      alert(err.message); // Display errors like "wrong email"/"wrong password"
+      await Swal.fire({
+        icon: 'error',
+        title: 'Login Failed',
+        text: err.message,
+        confirmButtonText: 'Try Again',
+      });
     }
   };
-// Get and parse a JSON object from localStorage
-JSON.parse(localStorage.getItem('userDetails'));
 
+  // Get and parse a JSON object from localStorage
+  JSON.parse(localStorage.getItem('userDetails'));
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

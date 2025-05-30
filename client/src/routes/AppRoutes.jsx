@@ -7,6 +7,7 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import PrivateRoute from '../routes/PrivateRoute';
 import DashboardLayout from '../layouts/DashboardLayout';
+import Enroll from '../pages/Enroll';
 
 
 export default function AppRoutes() {
@@ -27,6 +28,7 @@ export default function AppRoutes() {
         }
       >
         <Route path="/dashboard/developers" element={<Developers />} />
+        <Route path="/dashboard/enrollstudent" element={<Enroll />} />
         <Route path="/dashboard/about" element={<About />} />
         </Route>
 

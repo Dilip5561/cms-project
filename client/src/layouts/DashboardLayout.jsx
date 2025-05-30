@@ -11,6 +11,9 @@ export default function DashboardLayout() {
           <Link to="/dashboard" className="block px-4 py-2 rounded hover:bg-blue-100">
             Home
           </Link>
+          <Link to="/dashboard/enrollstudent" className="block px-4 py-2 rounded hover:bg-blue-100">
+            Enrollment
+          </Link>
           <Link to="/dashboard/developers" className="block px-4 py-2 rounded hover:bg-blue-100">
             Profile
           </Link>
