@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import historyService from '../service/HistoryService';
 import userService from '../service/UserService';
-import { useNavigate } from 'react-router-dom'; // ✅ Add this
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';  // <-- Import SweetAlert2
 
 export default function SignUp() {
-  const navigate = useNavigate(); // ✅ Navigation hook
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -19,30 +20,44 @@ export default function SignUp() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // ✅ Try adding user
-      userService.addUser(formData.email, formData.password);
+      // Try adding user
+      await userService.addUser(formData.email, formData.password);
       historyService.logActivity(formData.email, "Registered a new account");
-      alert("User registered successfully!");
+
+      await Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'User registered successfully!',
+        confirmButtonText: 'OK'
+      });
+
+      setFormData({ name: '', email: '', password: '' });
+      navigate('/signin');
 
     } catch (err) {
       if (err.message === "user already exists") {
-        alert("User already exists! Redirecting to login...");
+        await Swal.fire({
+          icon: 'warning',
+          title: 'User Exists',
+          text: 'User already exists! Redirecting to login...',
+          confirmButtonText: 'OK'
+        });
+        navigate('/signin');
       } else {
-        alert(err.message);
-        return;
+        await Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: err.message,
+          confirmButtonText: 'OK'
+        });
       }
     }
-
-    // ✅ Clear form and redirect to sign-in
-    setFormData({ name: '', email: '', password: '' });
-    navigate('/signin');
   };
 
- 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-blue-200 px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
