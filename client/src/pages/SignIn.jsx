@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import userService from '../service/UserService';
-import Swal from 'sweetalert2';  // <-- Import SweetAlert2
+
+import Swal from 'sweetalert2'; // <-- Import SweetAlert2
+import userService from '../service/UserService'; // ✅ Import your class-based service
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -31,6 +32,7 @@ export default function SignIn() {
         title: 'Login Successful',
         text: 'Welcome back!',
         confirmButtonText: 'OK',
+
       });
 
       setEmail('');
@@ -40,11 +42,13 @@ export default function SignIn() {
       navigate('/dashboard/about');
 
     } catch (err) {
+
       await Swal.fire({
         icon: 'error',
         title: 'Login Failed',
         text: err.message,
         confirmButtonText: 'Try Again',
+
       });
     }
   };

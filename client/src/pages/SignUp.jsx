@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import historyService from '../service/HistoryService';
 import userService from '../service/UserService';
 import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';  // <-- Import SweetAlert2
+
+import Swal from 'sweetalert2'; // <-- import sweetalert2
+
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -24,35 +26,42 @@ export default function SignUp() {
     e.preventDefault();
 
     try {
-      // Try adding user
-      await userService.addUser(formData.email, formData.password);
+
+      userService.addUser(formData.email, formData.password);
       historyService.logActivity(formData.email, "Registered a new account");
 
-      await Swal.fire({
+      Swal.fire({
         icon: 'success',
-        title: 'Success!',
-        text: 'User registered successfully!',
-        confirmButtonText: 'OK'
+        title: 'User registered successfully!',
+        showConfirmButton: false,
+        timer: 1500
       });
 
       setFormData({ name: '', email: '', password: '' });
-      navigate('/signin');
+
+      setTimeout(() => {
+        navigate('/signin');
+      }, 1600); // Delay navigation to show alert
 
     } catch (err) {
       if (err.message === "user already exists") {
-        await Swal.fire({
+        Swal.fire({
           icon: 'warning',
-          title: 'User Exists',
-          text: 'User already exists! Redirecting to login...',
-          confirmButtonText: 'OK'
+          title: 'User already exists!',
+          text: 'Redirecting to login...',
+          timer: 2000,
+          showConfirmButton: false,
         });
-        navigate('/signin');
+        setTimeout(() => {
+          navigate('/signin');
+        }, 2100);
       } else {
-        await Swal.fire({
+        Swal.fire({
           icon: 'error',
           title: 'Error',
           text: err.message,
-          confirmButtonText: 'OK'
+
+
         });
       }
     }
