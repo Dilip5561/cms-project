@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import historyService from '../service/HistoryService';
 import userService from '../service/UserService';
-import { useNavigate } from 'react-router-dom'; // ✅ Add this
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'; // <-- import sweetalert2
 
 export default function SignUp() {
-  const navigate = useNavigate(); // ✅ Navigation hook
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -23,26 +24,44 @@ export default function SignUp() {
     e.preventDefault();
 
     try {
-      // ✅ Try adding user
       userService.addUser(formData.email, formData.password);
       historyService.logActivity(formData.email, "Registered a new account");
-      alert("User registered successfully!");
+
+      Swal.fire({
+        icon: 'success',
+        title: 'User registered successfully!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+
+      setFormData({ name: '', email: '', password: '' });
+
+      setTimeout(() => {
+        navigate('/signin');
+      }, 1600); // Delay navigation to show alert
 
     } catch (err) {
       if (err.message === "user already exists") {
-        alert("User already exists! Redirecting to login...");
+        Swal.fire({
+          icon: 'warning',
+          title: 'User already exists!',
+          text: 'Redirecting to login...',
+          timer: 2000,
+          showConfirmButton: false,
+        });
+        setTimeout(() => {
+          navigate('/signin');
+        }, 2100);
       } else {
-        alert(err.message);
-        return;
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: err.message,
+        });
       }
     }
-
-    // ✅ Clear form and redirect to sign-in
-    setFormData({ name: '', email: '', password: '' });
-    navigate('/signin');
   };
 
- 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-blue-200 px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-md">

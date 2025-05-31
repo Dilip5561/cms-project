@@ -22,7 +22,8 @@ export default function Calculator() {
   const reset = () => setRes('');
   const del = () => setRes((prev) => prev.slice(0, -1));
 
-  const goBack = () => navigate('/dashboard');
+  const goBack = () => navigate('/dashboard/top/home');
+
 
   return (
     <div style={styles.body}>

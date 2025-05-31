@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function Home() {
+export default function HomeIntro() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-100 to-blue-300 px-4">
       <h1 className="text-5xl font-bold text-blue-900 mb-6 text-center">Welcome to Student Info Management System</h1>

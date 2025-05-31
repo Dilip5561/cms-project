@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import { StudentContext } from "../../../context/StudentContext";
 
-
-
 export default function StudentDetails() {
   const { students } = useContext(StudentContext);
 

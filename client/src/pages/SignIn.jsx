@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'; // <-- Import SweetAlert2
 import userService from '../service/UserService'; // ✅ Import your class-based service
 
 export default function SignIn() {
@@ -25,7 +26,14 @@ export default function SignIn() {
       loginHistory.push({ email, password, dateTime: now });
       localStorage.setItem('loginHistory', JSON.stringify(loginHistory));
 
-      alert('Login successful!');
+      // SweetAlert success message
+      Swal.fire({
+        icon: 'success',
+        title: 'Login successful!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+
       setEmail('');
       setPassword('');
 
@@ -33,12 +41,17 @@ export default function SignIn() {
       navigate('/dashboard/about');
 
     } catch (err) {
-      alert(err.message); // Display errors like "wrong email"/"wrong password"
+      // SweetAlert error message
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err.message
+      });
     }
   };
-// Get and parse a JSON object from localStorage
-JSON.parse(localStorage.getItem('userDetails'));
 
+  // Get and parse a JSON object from localStorage
+  JSON.parse(localStorage.getItem('userDetails'));
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
