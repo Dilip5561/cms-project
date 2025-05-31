@@ -4,17 +4,21 @@ const universities = [
   {
     name: 'Harvard University',
     description: 'Located in Cambridge, Massachusetts, Harvard is one of the oldest and most prestigious universities in the world.',
-    image: '/src/assets/Harvard.jpeg', // ✅ Fixed local image path
+
+    image: '/src/assets/Harvard.jpeg', // ✅ Fixed local image pat
   },
   {
     name: 'Stanford University',
     description: 'Situated in the heart of Silicon Valley, Stanford is known for innovation, entrepreneurship, and strong engineering programs.',
+
     image: '/src/assets/Stanford.jpeg', // ✅ Fixed local image path
+
   },
   {
     name: 'University of Oxford',
     description: 'A historic university in England, Oxford is known for its rigorous academics and long-standing traditions.',
     image: '/src/assets/Oxford.jpeg', // ✅ Fixed local image path
+
   },
 ];
 

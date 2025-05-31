@@ -1,5 +1,4 @@
-import { Routes, Route } from 'react-router-dom';  // NO BrowserRouter import here
-
+import { Routes, Route } from 'react-router-dom'; 
 import Home from '../pages/Dashboard/Top/Home';
 import About from '../pages/Dashboard/Bottom/About';
 import Developers from '../pages/Dashboard/Bottom/Developers';
@@ -7,8 +6,7 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import PrivateRoute from '../routes/PrivateRoute';
 import DashboardLayout from '../layouts/DashboardLayout';
-
-import StudentDetails from '../pages/Dashboard/Bottom/StudentDetails';  
+import StudentDetails from '../pages/Dashboard/Bottom/StudentDetails';
 import Calculator from '../pages/Dashboard/Top/Calculator';
 import Enroll from '../pages/Dashboard/Bottom/Enroll';
 import HomeIntro from '../pages/HomeIntro';
@@ -23,9 +21,6 @@ export default function AppRoutes() {
       <Route index="/" element={<HomeIntro />} />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
-
-
-      {/* Protected Route */}
       <Route
         path="/dashboard"
         element={(
@@ -37,11 +32,11 @@ export default function AppRoutes() {
         <Route path='/dashboard/top/home' element={<Home />} />  // Corrected path to '/dashboard/top/home
         <Route path="/dashboard/top/calculator" element={<Calculator />} />
         <Route path='/dashboard/top/stopwatch' element={<Stopwatch />} />  // Corrected path to '/dashboard/bottom/Enroll
-        <Route path="/dashboard/bottom/Enroll" element={<Enroll />} />
-        <Route path="/dashboard/studentdetails" element={<StudentDetails />} />
 
+        <Route path="/dashboard/bottom/enroll" element={<Enroll />} />
+
+        <Route path="/dashboard/studentdetails" element={<StudentDetails />} />
         <Route path="/dashboard/developers" element={<Developers />} />
-        <Route path="/dashboard/enrollstudent" element={<Enroll />} />
         <Route path="/dashboard/about" element={<About />} />
       </Route>
 

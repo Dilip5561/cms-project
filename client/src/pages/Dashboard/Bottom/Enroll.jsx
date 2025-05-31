@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Swal from 'sweetalert2';
-import { StudentContext } from "../../../context/StudentContext";
+import { StudentContext } from '../../../context/StudentContext'; // adjust path as needed
 
 export default function Enroll() {
   const { addStudent } = useContext(StudentContext);
@@ -41,9 +41,6 @@ export default function Enroll() {
 
     setStudentDetails(initialDetails);  // reset form
   };
-
-
-
 
   const handleReset = () => {
     setStudentDetails(initialDetails);
