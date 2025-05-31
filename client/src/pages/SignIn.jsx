@@ -39,7 +39,7 @@ export default function SignIn() {
       setPassword('');
 
       // Navigate to dashboard
-      navigate('/dashboard/about');
+      navigate('/dashboard/top/Home'); // ✅ Navigate to the dashboard after successful login');
 
     } catch (err) {
 

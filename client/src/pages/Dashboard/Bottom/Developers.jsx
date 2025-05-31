@@ -12,9 +12,11 @@ export default function Developers() {
         <div className="grid sm:grid-cols-2 gap-10">
           {/* Team Lead - Dilip */}
           <div className="bg-white rounded-2xl shadow-xl p-6 transition hover:shadow-2xl">
-            <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-blue-100 flex items-center justify-center text-3xl font-bold text-blue-700">
-              TL
-            </div>
+            <img
+              src="https://images.hdqwalls.com/wallpapers/lionel-messi-fifa-world-cup-qatar-4k-mu.jpg" // Replace with Dilip's photo URL
+              alt="Dilip"
+              className="w-24 h-24 mx-auto mb-4 rounded-full object-cover border-4 border-blue-200"
+            />
             <h2 className="text-xl font-semibold text-blue-700">Dilip</h2>
             <p className="text-gray-500 mb-3">Team Lead</p>
             <p className="text-sm text-gray-600 mb-4">
@@ -30,7 +32,7 @@ export default function Developers() {
             </div>
             <div className="mt-4">
               <a
-                href="#"
+                href="https://github.com/Dilip5561"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 underline text-sm"
@@ -42,9 +44,11 @@ export default function Developers() {
 
           {/* Team Member - Maharaja */}
           <div className="bg-white rounded-2xl shadow-xl p-6 transition hover:shadow-2xl">
-            <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-blue-100 flex items-center justify-center text-3xl font-bold text-blue-700">
-              MJ
-            </div>
+            <img
+              src="https://www.kemifilani.ng/wp-content/uploads/2023/01/Ronaldo-Al-Nassr9.jpg" // Replace with Maharaja's photo URL
+              alt="Maharaja"
+              className="w-24 h-24 mx-auto mb-4 rounded-full object-cover border-4 border-blue-200"
+            />
             <h2 className="text-xl font-semibold text-blue-700">Maharaja</h2>
             <p className="text-gray-500 mb-3">Team Member</p>
             <p className="text-sm text-gray-600 mb-4">
@@ -60,7 +64,7 @@ export default function Developers() {
             </div>
             <div className="mt-4">
               <a
-                href="#"
+                href="https://github.com/Maharajakumar04"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 underline text-sm"
