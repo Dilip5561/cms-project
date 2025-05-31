@@ -7,11 +7,15 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import PrivateRoute from '../routes/PrivateRoute';
 import DashboardLayout from '../layouts/DashboardLayout';
+
 import StudentDetails from '../pages/Dashboard/Bottom/StudentDetails';  
 import Calculator from '../pages/Dashboard/Top/Calculator';
 import Enrollment from '../pages/Dashboard/Bottom/Enroll';
 import HomeIntro from '../pages/HomeIntro';
 import Stopwatch from '../pages/Dashboard/Top/Stopwatch';
+
+
+
 
 export default function AppRoutes() {
   return (
@@ -37,6 +41,7 @@ export default function AppRoutes() {
         <Route path="/dashboard/studentdetails" element={<StudentDetails />} />
 
         <Route path="/dashboard/developers" element={<Developers />} />
+        <Route path="/dashboard/enrollstudent" element={<Enroll />} />
         <Route path="/dashboard/about" element={<About />} />
       </Route>
 

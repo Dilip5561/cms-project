@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import historyService from '../service/HistoryService';
 import userService from '../service/UserService';
 import { useNavigate } from 'react-router-dom';
+
 import Swal from 'sweetalert2'; // <-- import sweetalert2
+
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -20,10 +22,11 @@ export default function SignUp() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+
       userService.addUser(formData.email, formData.password);
       historyService.logActivity(formData.email, "Registered a new account");
 
@@ -57,6 +60,8 @@ export default function SignUp() {
           icon: 'error',
           title: 'Error',
           text: err.message,
+
+
         });
       }
     }

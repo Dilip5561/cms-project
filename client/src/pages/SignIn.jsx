@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+
 import Swal from 'sweetalert2'; // <-- Import SweetAlert2
 import userService from '../service/UserService'; // ✅ Import your class-based service
 
@@ -10,42 +11,44 @@ export default function SignIn() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // ✅ Validate using your class method
+      // Validate using your class method
       userService.authenticate(email, password);
 
-      // ✅ Update login context
+      // Update login context
       login(email);
 
-      // ✅ Optional: Log login history
+      // Log login history
       const now = new Date().toISOString();
       const loginHistory = JSON.parse(localStorage.getItem('loginHistory')) || [];
       loginHistory.push({ email, password, dateTime: now });
       localStorage.setItem('loginHistory', JSON.stringify(loginHistory));
 
-      // SweetAlert success message
-      Swal.fire({
+      await Swal.fire({
         icon: 'success',
-        title: 'Login successful!',
-        showConfirmButton: false,
-        timer: 1500
+        title: 'Login Successful',
+        text: 'Welcome back!',
+        confirmButtonText: 'OK',
+
       });
 
       setEmail('');
       setPassword('');
 
-      // ✅ Navigate to About Page (as per your goal)
+      // Navigate to dashboard
       navigate('/dashboard/about');
 
     } catch (err) {
-      // SweetAlert error message
-      Swal.fire({
+
+      await Swal.fire({
         icon: 'error',
-        title: 'Oops...',
-        text: err.message
+        title: 'Login Failed',
+        text: err.message,
+        confirmButtonText: 'Try Again',
+
       });
     }
   };
