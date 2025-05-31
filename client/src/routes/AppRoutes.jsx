@@ -10,9 +10,9 @@ import DashboardLayout from '../layouts/DashboardLayout';
 
 import StudentDetails from '../pages/Dashboard/Bottom/StudentDetails';  
 import Calculator from '../pages/Dashboard/Top/Calculator';
-import Enrollment from '../pages/Dashboard/Bottom/Enroll';
 import HomeIntro from '../pages/HomeIntro';
 import Stopwatch from '../pages/Dashboard/Top/Stopwatch';
+import Enroll from '../pages/Dashboard/Bottom/Enroll';
 
 
 
@@ -37,7 +37,7 @@ export default function AppRoutes() {
         <Route path='/dashboard/top/home' element={<Home />} />  // Corrected path to '/dashboard/top/home
         <Route path="/dashboard/top/calculator" element={<Calculator />} />
         <Route path='/dashboard/top/stopwatch' element={<Stopwatch />} />  // Corrected path to '/dashboard/bottom/Enroll
-        <Route path="/dashboard/bottom/Enroll" element={<Enrollment />} />
+        <Route path="/dashboard/bottom/Enroll" element={<Enroll />} />
         <Route path="/dashboard/studentdetails" element={<StudentDetails />} />
 
         <Route path="/dashboard/developers" element={<Developers />} />
