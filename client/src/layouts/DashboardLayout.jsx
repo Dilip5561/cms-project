@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
@@ -65,6 +66,8 @@ export default function DashboardLayout() {
 
         {/* Page Content */}
         <main className="flex-1 p-6">
+
+
           <Outlet />
         </main>
       </div>
