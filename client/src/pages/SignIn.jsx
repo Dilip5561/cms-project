@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-import Swal from 'sweetalert2'; // <-- Import SweetAlert2
-import userService from '../service/UserService'; // ✅ Import your class-based service
+import Swal from 'sweetalert2';
+import userService from '../service/UserService';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -15,13 +15,9 @@ export default function SignIn() {
     e.preventDefault();
 
     try {
-      // Validate using your class method
       userService.authenticate(email, password);
-
-      // Update login context
       login(email);
 
-      // Log login history
       const now = new Date().toISOString();
       const loginHistory = JSON.parse(localStorage.getItem('loginHistory')) || [];
       loginHistory.push({ email, password, dateTime: now });
@@ -32,34 +28,27 @@ export default function SignIn() {
         title: 'Login Successful',
         text: 'Welcome back!',
         confirmButtonText: 'OK',
-
       });
 
       setEmail('');
       setPassword('');
-
-      // Navigate to dashboard
-      navigate('/dashboard/top/Home'); // ✅ Navigate to the dashboard after successful login');
-
+      navigate('/dashboard/top/Home');
     } catch (err) {
-
       await Swal.fire({
         icon: 'error',
         title: 'Login Failed',
         text: err.message,
         confirmButtonText: 'Try Again',
-
       });
     }
   };
 
-  // Get and parse a JSON object from localStorage
-  JSON.parse(localStorage.getItem('userDetails'));
-
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold text-center text-gray-800">Sign In to Your Account</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-200 via-purple-200 to-pink-300 px-4">
+      <div className="w-full max-w-md p-8 space-y-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-2xl border border-white/30">
+        <h2 className="text-3xl font-extrabold text-center text-blue-900 drop-shadow-md">
+          Sign In to Your Account
+        </h2>
 
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
@@ -72,7 +61,7 @@ export default function SignIn() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white/80 backdrop-blur-sm"
               placeholder="you@example.com"
             />
           </div>
@@ -87,22 +76,22 @@ export default function SignIn() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white/80 backdrop-blur-sm"
               placeholder="••••••••"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+            className="w-full px-4 py-2 font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl shadow-md hover:scale-105 hover:shadow-lg transition transform duration-300"
           >
             Sign In
           </button>
         </form>
 
-        <p className="text-sm text-center text-gray-600">
+        <p className="text-sm text-center text-gray-700">
           Don’t have an account?{' '}
-          <a href="/signup" className="text-blue-600 hover:underline">
+          <a href="/signup" className="text-blue-700 font-medium hover:underline">
             Sign up here
           </a>
         </p>

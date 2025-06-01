@@ -22,12 +22,11 @@ export default function Calculator() {
   const reset = () => setRes('');
   const del = () => setRes((prev) => prev.slice(0, -1));
 
-  const goBack = () => navigate('/dashboard/top/home');
-
+  // const goBack = () => navigate('/dashboard/top/home');
 
   return (
     <div style={styles.body}>
-      <button className="home" onClick={goBack} style={styles.home}>🔙</button>
+      {/* <button className="home" onClick={goBack} style={styles.home}>🔙</button> */}
 
       <div style={styles.frame}>
         <fieldset style={styles.fieldset}>
@@ -59,7 +58,7 @@ export default function Calculator() {
 const styles = {
   body: {
     fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
-    backgroundColor: '#4eb6dcb9',
+    background: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)',  // colorful gradient background
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -69,78 +68,86 @@ const styles = {
     position: 'relative',
   },
   frame: {
-    backgroundColor: '#ffffffc1',
+    background: 'rgba(255, 255, 255, 0.25)', // glass effect
+    borderRadius: 20,
     padding: 30,
-    borderRadius: 15,
-    boxShadow: '0 15px 35px rgba(0, 0, 0, 0.902)',
+    backdropFilter: 'blur(15px)',
+    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
   fieldset: {
-    border: '2px solid #4CAF50',
-    borderRadius: 10,
+    border: '2px solid #4caf50',
+    borderRadius: 15,
     padding: 15,
-    width: 260,
-    backgroundColor: '#fff',
-    marginBottom: 20,
+    width: 270,
+    background: '#f8fffe',
+    marginBottom: 25,
     textAlign: 'center',
+    boxShadow: 'inset 0 1px 4px rgba(0,0,0,0.1)',
   },
   legend: {
     fontWeight: 'bold',
-    fontSize: 18,
-    color: '#4CAF50',
+    fontSize: 20,
+    color: '#388e3c',
   },
   result: {
-    fontSize: 28,
+    fontSize: 30,
     fontWeight: 'bold',
-    color: '#333',
-    backgroundColor: '#f0f0f0',
-    borderRadius: 5,
-    padding: 10,
+    color: '#1a1a1a',
+    background: '#e3f2fd',
+    borderRadius: 8,
+    padding: 12,
+    marginTop: 5,
   },
   calculator: {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 60px)',
-    gap: 10,
+    gap: 12,
   },
   button: {
     height: 60,
     fontSize: 20,
     border: 'none',
-    borderRadius: 10,
+    borderRadius: 12,
     cursor: 'pointer',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    transition: 'background-color 0.2s ease',
+    transition: 'transform 0.15s ease, background-color 0.3s ease',
+    boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
   },
   number: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#ffffff',
     color: '#333',
   },
   operator: {
-    backgroundColor: '#4CAF50',
+    background: 'linear-gradient(45deg, #4caf50, #81c784)',
     color: '#fff',
   },
   equal: {
-    backgroundColor: '#007bb5',
+    background: 'linear-gradient(to right, #007aff, #00c6ff)',
     color: '#fff',
   },
   reset: {
-    backgroundColor: '#d32f2f',
+    background: 'linear-gradient(to right, #e53935, #e35d5b)',
     color: '#fff',
   },
   del: {
-    backgroundColor: '#fbc02d',
-    color: '#fff',
+    background: 'linear-gradient(to right, #fdd835, #fbc02d)',
+    color: '#000',
   },
   home: {
     position: 'absolute',
     padding: '10px 25px',
     top: 20,
     left: 20,
-    fontSize: 24,
+    fontSize: 26,
     cursor: 'pointer',
-    backgroundColor: 'transparent',
-    border: 'none',
+    backgroundColor: '#ffffff77',
+    border: '1px solid #ccc',
+    borderRadius: 12,
+    backdropFilter: 'blur(5px)',
+    boxShadow: '0 3px 10px rgba(0,0,0,0.2)',
+    transition: 'all 0.3s ease',
   },
 };
