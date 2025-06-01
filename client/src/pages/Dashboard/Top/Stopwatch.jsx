@@ -25,13 +25,13 @@ export default function Stopwatch() {
     setCount(0);
   };
 
-  const goBack = () => {
-    navigate('/dashboard/top/home');  // React Router navigation
-  };
+  // const goBack = () => {
+  //   navigate('/dashboard/top/home');  // React Router navigation
+  // };
 
   return (
     <div style={styles.body}>
-      <button className="home" onClick={goBack} style={styles.home}>🔙</button>
+      {/* <button className="home" onClick={goBack} style={styles.home}>🔙</button> */}
 
       <div style={styles.frame}>
         <p id="count" style={styles.count}>{count}</p>
@@ -48,7 +48,7 @@ export default function Stopwatch() {
 const styles = {
   body: {
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    backgroundColor: '#76c7dad7',
+    background: 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -58,61 +58,77 @@ const styles = {
     position: 'relative',
   },
   frame: {
-    backgroundColor: '#ffffffa1',
-    padding: '30px 40px',
-    borderRadius: 15,
-    boxShadow: '0 15px 35px rgba(0, 0, 0, 0.891)',
+    background: 'rgba(255, 255, 255, 0.3)',
+    padding: '35px 50px',
+    borderRadius: 25,
+    boxShadow: '0 15px 40px rgba(0, 0, 0, 0.3)',
+    backdropFilter: 'blur(12px)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     marginTop: -40,
   },
   count: {
-    fontSize: 72,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 30,
+    fontSize: 80,
+    fontWeight: '900',
+    color: '#1b2735',
+    textShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+    marginBottom: 35,
+    userSelect: 'none',
+    fontVariantNumeric: 'tabular-nums',
   },
   home: {
     position: 'absolute',
     top: 20,
     left: 20,
-    fontSize: 24,
-    backgroundColor: 'transparent',
+    fontSize: 28,
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
     cursor: 'pointer',
     border: 'none',
+    borderRadius: 12,
+    padding: '8px 20px',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+    backdropFilter: 'blur(6px)',
+    transition: 'background-color 0.3s ease, transform 0.2s ease',
   },
   start: {
-    backgroundColor: '#4CAF50',
-    color: 'white',
+    background: 'linear-gradient(45deg, #43e97b, #38f9d7)',
+    color: '#fff',
     border: 'none',
-    padding: '12px 24px',
-    margin: 5,
-    fontSize: 18,
-    borderRadius: 6,
+    padding: '14px 28px',
+    margin: 7,
+    fontSize: 20,
+    fontWeight: '600',
+    borderRadius: 14,
     cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
+    boxShadow: '0 6px 20px rgba(56, 249, 215, 0.6)',
+    transition: 'background 0.4s ease, transform 0.2s ease',
   },
   stop: {
-    backgroundColor: '#f44336',
-    color: 'white',
+    background: 'linear-gradient(45deg, #ff416c, #ff4b2b)',
+    color: '#fff',
     border: 'none',
-    padding: '12px 24px',
-    margin: 5,
-    fontSize: 18,
-    borderRadius: 6,
+    padding: '14px 28px',
+    margin: 7,
+    fontSize: 20,
+    fontWeight: '600',
+    borderRadius: 14,
     cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
+    boxShadow: '0 6px 20px rgba(255, 75, 43, 0.6)',
+    transition: 'background 0.4s ease, transform 0.2s ease',
   },
   reset: {
-    backgroundColor: '#008CBA',
-    color: 'white',
+    background: 'linear-gradient(45deg, #4776e6, #8e54e9)',
+    color: '#fff',
     border: 'none',
-    padding: '12px 24px',
-    margin: 5,
-    fontSize: 18,
-    borderRadius: 6,
+    padding: '14px 28px',
+    margin: 7,
+    fontSize: 20,
+    fontWeight: '600',
+    borderRadius: 14,
     cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
+    boxShadow: '0 6px 20px rgba(142, 84, 233, 0.6)',
+    transition: 'background 0.4s ease, transform 0.2s ease',
   },
 };
+

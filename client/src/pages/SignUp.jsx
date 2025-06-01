@@ -3,8 +3,7 @@ import historyService from '../service/HistoryService';
 import userService from '../service/UserService';
 import { useNavigate } from 'react-router-dom';
 
-import Swal from 'sweetalert2'; // <-- import sweetalert2
-
+import Swal from 'sweetalert2';
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -26,7 +25,6 @@ export default function SignUp() {
     e.preventDefault();
 
     try {
-
       userService.addUser(formData.email, formData.password);
       historyService.logActivity(formData.email, "Registered a new account");
 
@@ -34,15 +32,14 @@ export default function SignUp() {
         icon: 'success',
         title: 'User registered successfully!',
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
 
       setFormData({ name: '', email: '', password: '' });
 
       setTimeout(() => {
         navigate('/signin');
-      }, 1600); // Delay navigation to show alert
-
+      }, 1600);
     } catch (err) {
       if (err.message === "user already exists") {
         Swal.fire({
@@ -60,17 +57,17 @@ export default function SignUp() {
           icon: 'error',
           title: 'Error',
           text: err.message,
-
-
         });
       }
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-blue-200 px-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
-        <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">Create Account</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-200 via-purple-200 to-pink-300 px-4">
+      <div className="w-full max-w-md bg-white/60 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-white/30">
+        <h2 className="text-3xl font-extrabold text-center text-blue-900 mb-6 drop-shadow-md">
+          Create Account
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -83,7 +80,7 @@ export default function SignUp() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -97,7 +94,7 @@ export default function SignUp() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -111,16 +108,22 @@ export default function SignUp() {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-700 text-white py-2 rounded-lg font-semibold hover:bg-blue-800 transition"
+            className="w-full py-2 font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl shadow-md hover:scale-105 hover:shadow-lg transition transform duration-300"
           >
             Sign Up
           </button>
         </form>
+        <p className="mt-4 text-sm text-center text-gray-700">
+          Already have an account?{' '}
+          <a href="/signin" className="text-blue-700 font-medium hover:underline">
+            Sign in here
+          </a>
+        </p>
       </div>
     </div>
   );
