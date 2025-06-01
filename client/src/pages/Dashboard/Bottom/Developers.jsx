@@ -18,7 +18,7 @@ export default function Developers() {
             aria-label="Team Lead Dilip"
           >
             <img
-              src="https://images.hdqwalls.com/wallpapers/lionel-messi-fifa-world-cup-qatar-4k-mu.jpg"
+              src="/src/assets/dilip.jpg"
               alt="Dilip"
               className="w-28 h-28 mx-auto mb-6 rounded-full object-cover border-8 border-blue-300 shadow-lg"
             />
@@ -53,7 +53,7 @@ export default function Developers() {
             aria-label="Team Member Maharaja"
           >
             <img
-              src="https://www.kemifilani.ng/wp-content/uploads/2023/01/Ronaldo-Al-Nassr9.jpg"
+              src="/src/assets/Ronaldo.jpg"
               alt="Maharaja"
               className="w-28 h-28 mx-auto mb-6 rounded-full object-cover border-8 border-blue-300 shadow-lg"
             />
