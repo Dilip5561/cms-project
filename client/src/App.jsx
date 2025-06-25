@@ -1,3 +1,4 @@
+
 import AuthProvider from './context/AuthProvider';
 import { StudentProvider } from './context/StudentContext'; // ✅ Import the provider
 import AppRoutes from './routes/AppRoutes';
@@ -9,6 +10,7 @@ function App() {
         <AppRoutes />
       </StudentProvider>
     </AuthProvider>
+
   );
 }
 

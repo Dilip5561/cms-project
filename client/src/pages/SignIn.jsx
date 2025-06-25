@@ -1,9 +1,11 @@
+
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
 import userService from '../service/UserService';
+
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -54,10 +56,8 @@ export default function SignIn() {
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
+
+
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -68,6 +68,7 @@ export default function SignIn() {
 
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+
               Password
             </label>
             <input
@@ -84,6 +85,7 @@ export default function SignIn() {
           <button
             type="submit"
             className="w-full px-4 py-2 font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl shadow-md hover:scale-105 hover:shadow-lg transition transform duration-300"
+
           >
             Sign In
           </button>
@@ -95,6 +97,7 @@ export default function SignIn() {
             Sign up here
           </a>
         </p>
+
       </div>
     </div>
   );
