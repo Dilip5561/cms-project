@@ -1,12 +1,16 @@
-// To render only SignIn
-import './App.css';
-import SignIn from './pages/SignIn';
+
+import AuthProvider from './context/AuthProvider';
+import { StudentProvider } from './context/StudentContext'; // ✅ Import the provider
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
   return (
-    <>
-      <SignIn />
-    </>
+    <AuthProvider>
+      <StudentProvider>
+        <AppRoutes />
+      </StudentProvider>
+    </AuthProvider>
+
   );
 }
 
